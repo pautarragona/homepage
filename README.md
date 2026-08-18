@@ -25,13 +25,12 @@ then open http://localhost:8000
 
 ## Still to do
 
-- [ ] Replace `TODO-your-handle` with the real LinkedIn handle (2 places: the
-      JSON-LD block in `<head>`, and the contact list).
-- [ ] Replace the highlighted `[your subsystem]` in the BSc Thesis entry.
 - [ ] Add `cv.pdf` to the repo root, then uncomment the Download CV button in the
       About section.
 - [ ] Optional: add a 1200×630 `preview.png` and uncomment the `og:image` tags for
       rich link previews on LinkedIn/WhatsApp/Slack.
+- [ ] Add a DUT27 project card once there's real driverless work to describe.
+- [ ] Submit `sitemap.xml` in Google Search Console.
 
 ## Publishing
 

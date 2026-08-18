@@ -1,6 +1,6 @@
 /* ══ Pau Tarragona — personal site ══════════════════════════════
    Everything is driven by the tokens below. Change --accent and
-   the buttons, links, timeline, glow and diagram all follow.     */
+   the buttons, links, timeline, plot and diagram all follow.     */
 
 :root {
   --bg:      #060a13;
@@ -456,6 +456,27 @@ mark {
   animation: pulse 3.4s ease-in-out infinite;
 }
 @keyframes pulse { 50% { transform: scale(1.14); } }
+
+/* Secondary project — deliberately lighter than .feature so the
+   hierarchy reads: Dronado first, everything else after. */
+.card {
+  margin-top: 1rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  transition: border-color .4s var(--ease);
+}
+.card:hover { border-color: color-mix(in srgb, var(--accent) 35%, transparent); }
+.card h3 { font-size: 1.25rem; letter-spacing: -0.02em; }
+.card h3 a { text-decoration: none; }
+.card h3 a:hover { text-decoration: underline; }
+.card .sub { color: var(--accent); font-size: .9375rem; margin: 0 0 1rem; }
+.card > p:not(.kicker):not(.sub) {
+  color: var(--muted);
+  font-size: .9375rem;
+  max-width: 58ch;
+  margin: 0;
+}
 
 .more {
   margin: 1.5rem 0 0;
