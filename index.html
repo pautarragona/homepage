@@ -3,38 +3,47 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#070b14">
 
-<!-- ─── SEO: edit these four lines whenever your focus changes ─── -->
-<title>Pau Tarragona — Personal site</title>
-<meta name="description" content="Pau Tarragona — personal site, CV and selected projects.">
+<!-- ─── SEO ─── -->
+<title>Pau Tarragona — Aerospace engineer, autonomous systems</title>
+<meta name="description" content="Aerospace engineer from Barcelona, based in Delft. MSc Control &amp; Simulation at TU Delft — guidance, navigation and control for drones and driverless race cars.">
 <link rel="canonical" href="https://pautarragona.github.io/homepage/">
 <meta name="author" content="Pau Tarragona">
-
 <meta name="robots" content="index, follow">
 
-<!-- Link previews (Twitter/X, LinkedIn, WhatsApp, Slack) -->
 <meta property="og:type" content="profile">
-<meta property="og:title" content="Pau Tarragona — Personal site">
-<meta property="og:description" content="Pau Tarragona — personal site, CV and selected projects.">
+<meta property="og:title" content="Pau Tarragona — Aerospace engineer, autonomous systems">
+<meta property="og:description" content="Aerospace engineer from Barcelona, based in Delft. GNC for drones and driverless race cars.">
 <meta property="og:url" content="https://pautarragona.github.io/homepage/">
+<meta name="twitter:card" content="summary">
+<!-- Add a 1200x630 preview.png to the repo root, then uncomment these for rich link previews:
 <meta property="og:image" content="https://pautarragona.github.io/homepage/preview.png">
 <meta name="twitter:card" content="summary_large_image">
+-->
 
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='Georgia,serif'>P</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23070b14'/><text x='50' y='72' font-size='62' font-weight='700' text-anchor='middle' fill='%233d7bff' font-family='system-ui,sans-serif'>P</text></svg>">
 <link rel="stylesheet" href="style.css">
 
-<!-- Tells Google this page is about a person, so it can build a knowledge panel -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Pau Tarragona",
   "url": "https://pautarragona.github.io/homepage/",
-  "jobTitle": "TODO — your role",
-  "description": "TODO — one sentence about you.",
+  "jobTitle": "Aerospace Engineer",
+  "description": "Aerospace engineer working on guidance, navigation and control for autonomous vehicles — drones and driverless race cars.",
+  "birthPlace": "Barcelona, Spain",
+  "homeLocation": { "@type": "Place", "name": "Delft, Netherlands" },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Delft University of Technology" },
+    { "@type": "CollegeOrUniversity", "name": "Universidad Carlos III de Madrid" }
+  ],
+  "knowsAbout": ["Guidance Navigation and Control", "Flight Dynamics", "Control Theory", "Autonomous Systems", "Unmanned Aerial Vehicles", "Systems Engineering"],
+  "email": "mailto:pautarragona05@gmail.com",
   "sameAs": [
     "https://github.com/pautarragona",
-    "https://www.linkedin.com/in/TODO"
+    "https://www.linkedin.com/in/TODO-your-handle"
   ]
 }
 </script>
@@ -43,10 +52,10 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="masthead">
-  <div class="wrap">
-    <h1 class="name">Pau Tarragona</h1>
-    <p class="tagline">TODO — your role, in one line. e.g. “Software engineer building tools for X.”</p>
+<!-- Sticky bar, fades in once you scroll past the hero -->
+<div class="topbar" id="topbar">
+  <div class="wrap topbar-in">
+    <a class="topbar-name" href="#top">Pau Tarragona</a>
     <nav aria-label="Sections">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
@@ -54,92 +63,216 @@
       <a href="#contact">Contact</a>
     </nav>
   </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="grid"></div>
+    <div class="glow glow-a"></div>
+    <div class="glow glow-b"></div>
+    <div class="spot" id="spot"></div>
+    <!-- Trajectory motif: dashed flight path with a marker flying it -->
+    <svg class="traj" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
+      <path id="arc" d="M -40 330 C 180 330, 250 90, 420 90 S 660 250, 860 60"
+            fill="none" stroke="currentColor" stroke-width="1.25"
+            stroke-dasharray="5 9" vector-effect="non-scaling-stroke"/>
+      <circle class="marker" cx="-40" cy="330" r="4">
+        <animateMotion dur="14s" repeatCount="indefinite" rotate="auto"
+                       keyPoints="0;1" keyTimes="0;1" calcMode="spline"
+                       keySplines="0.45 0 0.55 1">
+          <mpath href="#arc" xlink:href="#arc"/>
+        </animateMotion>
+      </circle>
+    </svg>
+  </div>
+
+  <div class="wrap hero-in">
+    <p class="eyebrow rise" style="--d:0ms">
+      <span class="dot"></span> Barcelona → Delft · MSc Control &amp; Simulation
+    </p>
+
+    <h1 class="name rise" style="--d:80ms">
+      <span>Pau</span> <span>Tarragona</span>
+    </h1>
+
+    <p class="tagline rise" style="--d:180ms">
+      Aerospace engineer working on autonomous systems —
+      <em>drones, control, and race cars.</em>
+    </p>
+
+    <div class="actions rise" style="--d:280ms">
+      <a class="btn" href="#projects">See the work</a>
+      <a class="btn btn-quiet" href="mailto:pautarragona05@gmail.com">Get in touch</a>
+    </div>
+  </div>
+
+  <div class="scroll-cue rise" style="--d:520ms" aria-hidden="true"><span></span></div>
 </header>
 
-<main id="main" class="wrap">
+<main id="main">
 
-  <section id="about" class="lede">
-    <h2>About</h2>
-    <p>
-      TODO — two or three sentences. Who you are, what you work on, what you care
-      about. Write it the way you'd say it out loud. This is the paragraph Google
-      is most likely to show under your name, so put the important words in it.
-    </p>
-    <p class="actions">
-      <a class="btn" href="cv.pdf">Download CV</a>
-      <a class="btn btn-quiet" href="mailto:pautarragona05@gmail.com">Email me</a>
-    </p>
-  </section>
-
-  <section id="experience">
-    <h2>Experience</h2>
-
-    <article class="entry">
-      <div class="when">2024 — Present</div>
-      <div class="what">
-        <h3>Job title <span class="at">at</span> <a href="#">Company</a></h3>
-        <p>TODO — one or two lines on what you did and what came of it. Numbers help.</p>
-      </div>
-    </article>
-
-    <article class="entry">
-      <div class="when">2022 — 2024</div>
-      <div class="what">
-        <h3>Job title <span class="at">at</span> <a href="#">Company</a></h3>
-        <p>TODO — one or two lines.</p>
-      </div>
-    </article>
-
-    <article class="entry">
-      <div class="when">2018 — 2022</div>
-      <div class="what">
-        <h3>Degree <span class="at">at</span> <a href="#">University</a></h3>
-        <p>TODO — field of study, thesis, anything notable.</p>
-      </div>
-    </article>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="cards">
-
-      <article class="card">
-        <h3><a href="#">Project name</a></h3>
-        <p>TODO — what it is and why it exists, in one or two sentences.</p>
-        <ul class="tags"><li>Python</li><li>Postgres</li></ul>
-      </article>
-
-      <article class="card">
-        <h3><a href="#">Project name</a></h3>
-        <p>TODO — what it is and why it exists.</p>
-        <ul class="tags"><li>TypeScript</li><li>React</li></ul>
-      </article>
-
-      <article class="card">
-        <h3><a href="#">Project name</a></h3>
-        <p>TODO — what it is and why it exists.</p>
-        <ul class="tags"><li>Tag</li><li>Tag</li></ul>
-      </article>
-
+  <section id="about" class="wrap reveal">
+    <h2><i>01</i> About</h2>
+    <div class="prose">
+      <p class="lede">
+        I'm an aerospace engineer from Barcelona, based in Delft. I just finished my BSc
+        at TU Delft and I'm starting an MSc in Control &amp; Simulation there, working on
+        guidance, navigation and control for autonomous vehicles.
+      </p>
+      <p>
+        My capstone was a cooperative multi-drone cargo transport system for disaster
+        relief, and this year I'm joining DUT Racing's driverless team. I like problems
+        where the control theory has to survive contact with real hardware.
+      </p>
+      <!-- Drop cv.pdf in the repo root, then delete these two comment lines to switch the button on.
+      <p class="actions">
+        <a class="btn btn-quiet" href="cv.pdf">Download CV</a>
+      </p>
+      -->
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>The best way to reach me is email. I read everything.</p>
-    <ul class="links">
-      <li><a href="mailto:pautarragona05@gmail.com">pautarragona05@gmail.com</a></li>
-      <li><a href="https://github.com/pautarragona" rel="me">GitHub</a></li>
-      <li><a href="https://www.linkedin.com/in/TODO" rel="me">LinkedIn</a></li>
-    </ul>
+  <section id="experience" class="wrap reveal">
+    <h2><i>02</i> Experience</h2>
+    <ol class="timeline">
+
+      <li class="entry">
+        <div class="when">Sep 2026 —</div>
+        <div class="what">
+          <h3>Autonomous Systems <span class="at">·</span> DUT Racing</h3>
+          <p class="org">Delft University Racing — DUT27</p>
+          <p>Joining the driverless Formula Student team for the 2027 season.</p>
+        </div>
+      </li>
+
+      <li class="entry">
+        <div class="when">Sep 2026 — Feb 2027</div>
+        <div class="what">
+          <h3>Teaching Assistant <span class="at">·</span> TU Delft</h3>
+          <p class="org">AE2111-I Systems Design</p>
+          <p>Supervising first-year aerospace design groups through the systems engineering
+             cycle; running tutorials and grading design reports.</p>
+        </div>
+      </li>
+
+      <li class="entry">
+        <div class="when">Apr 2026 — Jul 2026</div>
+        <div class="what">
+          <h3>BSc Thesis <span class="at">·</span> TU Delft</h3>
+          <p class="org">Design Synthesis Exercise — "Spin It Up" / Dronado</p>
+          <p>Cooperative multi-drone hybrid cargo transport for disaster relief. Led
+             <mark>[your subsystem]</mark> across a 10-person team; built the Python simulation
+             of the spinning-phase flight dynamics and co-authored the final report and defence.</p>
+        </div>
+      </li>
+
+      <li class="entry">
+        <div class="when">Sep 2022 — Jul 2026</div>
+        <div class="what">
+          <h3>BSc Aerospace Engineering <span class="at">·</span> TU Delft</h3>
+          <p class="org">Flight dynamics &amp; control</p>
+          <p>Erasmus exchange in Computer Science &amp; Engineering at UC3M Madrid,
+             Sep 2024 – Feb 2025.</p>
+        </div>
+      </li>
+
+    </ol>
+  </section>
+
+  <section id="projects" class="wrap reveal">
+    <h2><i>03</i> Projects</h2>
+
+    <article class="feature">
+      <div class="feature-body">
+        <p class="kicker">BSc Thesis · 10-person team · 2026</p>
+        <h3>Dronado — “Spin It Up”</h3>
+        <p class="sub">Multi-drone cargo transport</p>
+        <p>
+          Cooperative system where several drones combine to carry loads no single airframe
+          could, designed against a Hurricane Maria relief scenario. Covered system
+          architecture, avionics and comms, and a physics simulation of the spinning
+          transfer phase.
+        </p>
+        <ul class="tags">
+          <li>Python</li><li>Simulink</li><li>Flight Dynamics</li><li>Systems Engineering</li>
+        </ul>
+      </div>
+      <div class="feature-art" aria-hidden="true">
+        <!-- Three drones orbiting a shared load -->
+        <svg viewBox="0 0 200 200">
+          <circle class="orbit" cx="100" cy="100" r="62"/>
+          <circle class="orbit orbit-2" cx="100" cy="100" r="38"/>
+          <g class="rotor">
+            <circle class="node" cx="100" cy="38" r="5.5"/>
+            <circle class="node" cx="46"  cy="131" r="5.5"/>
+            <circle class="node" cx="154" cy="131" r="5.5"/>
+            <path class="tether" d="M100 38 L100 100 M46 131 L100 100 M154 131 L100 100"/>
+          </g>
+          <rect class="load" x="90" y="90" width="20" height="20" rx="3"/>
+        </svg>
+      </div>
+    </article>
+
+    <p class="more">
+      More on <a href="https://github.com/pautarragona">GitHub</a> — DUT27 work lands here
+      once there's something real to show.
+    </p>
+  </section>
+
+  <section id="contact" class="wrap reveal">
+    <h2><i>04</i> Contact</h2>
+    <div class="prose">
+      <p class="lede">The best way to reach me is email. I read everything.</p>
+      <ul class="links">
+        <li><a href="mailto:pautarragona05@gmail.com">pautarragona05@gmail.com</a></li>
+        <li><a href="https://github.com/pautarragona" rel="me">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/TODO-your-handle" rel="me">LinkedIn</a></li>
+      </ul>
+    </div>
   </section>
 
 </main>
 
 <footer class="wrap">
-  <p>© <span id="year">2026</span> Pau Tarragona · Built with plain HTML, hosted on GitHub Pages.</p>
+  <p>© <span id="year">2026</span> Pau Tarragona</p>
+  <p>Delft, NL · Plain HTML, no trackers</p>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* Reveal sections as they enter the viewport */
+if ('IntersectionObserver' in window && !still) {
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, { rootMargin: '0px 0px -12% 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+} else {
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+}
+
+/* Sticky bar appears once the hero is behind you */
+const topbar = document.getElementById('topbar');
+const onScroll = () => topbar.classList.toggle('show', window.scrollY > 260);
+addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* Soft light that follows the pointer across the hero */
+const spot = document.getElementById('spot');
+if (spot && !still && matchMedia('(hover: hover)').matches) {
+  const hero = document.querySelector('.hero');
+  hero.addEventListener('pointermove', (e) => {
+    const r = hero.getBoundingClientRect();
+    spot.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    spot.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    spot.style.opacity = '1';
+  });
+  hero.addEventListener('pointerleave', () => { spot.style.opacity = '0'; });
+}
+</script>
 </body>
 </html>
