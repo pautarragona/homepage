@@ -112,7 +112,8 @@ body {
 .topbar nav a:hover { color: var(--ink); }
 .topbar nav a:hover::after { transform: scaleX(1); }
 
-@media (max-width: 33rem) { .topbar nav { display: none; } }
+/* five items no longer fit alongside the name below this */
+@media (max-width: 40rem) { .topbar nav { display: none; } }
 
 /* ══ Hero ═══════════════════════════════════════════════════════ */
 
