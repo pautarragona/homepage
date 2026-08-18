@@ -410,11 +410,19 @@ mark {
   font-size: .9375rem;
   margin: 0 0 1rem;
 }
-.feature-body > p:not(.kicker):not(.sub) {
+.feature-body > p:not(.kicker):not(.sub):not(.paper) {
   color: var(--muted);
   font-size: .9375rem;
-  max-width: 40ch;
+  max-width: 46ch;
 }
+
+.paper {
+  margin: 1.25rem 0 0;
+  font-family: var(--mono);
+  font-size: .8125rem;
+}
+.paper a { text-decoration: none; }
+.paper a:hover { text-decoration: underline; }
 
 .tags {
   display: flex; flex-wrap: wrap; gap: .4rem;

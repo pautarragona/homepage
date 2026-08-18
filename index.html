@@ -39,7 +39,7 @@
     { "@type": "CollegeOrUniversity", "name": "Delft University of Technology" },
     { "@type": "CollegeOrUniversity", "name": "Universidad Carlos III de Madrid" }
   ],
-  "knowsAbout": ["Guidance Navigation and Control", "Flight Dynamics", "Control Theory", "Autonomous Systems", "Unmanned Aerial Vehicles", "Systems Engineering", "Computer Vision", "Machine Learning"],
+  "knowsAbout": ["Guidance Navigation and Control", "Flight Dynamics", "Control Theory", "Autonomous Systems", "Unmanned Aerial Vehicles", "Systems Engineering", "Trajectory Optimisation", "Optimal Control", "Computer Vision", "Machine Learning"],
   "email": "mailto:pautarragona05@gmail.com",
   "sameAs": [
     "https://github.com/pautarragona",
@@ -160,11 +160,11 @@
         <div class="when">Apr 2026 — Jul 2026</div>
         <div class="what">
           <h3>BSc Thesis <span class="at">·</span> TU Delft</h3>
-          <p class="org">Design Synthesis Exercise — "Spin It Up" / Dronado</p>
-          <p>Cooperative multi-drone hybrid cargo transport for disaster relief. Came in as
-             the team's control engineer and ended up spending most of it on flight dynamics:
-             built the Python simulation of the spinning transfer phase, and co-authored the
-             final report and defence with a team of ten.</p>
+          <p class="org">AE3200 Design Synthesis Exercise — "Spin It Up" / Dronado</p>
+          <p>Three fixed-wing eVTOL UAVs carrying a shared 50 kg cable-suspended payload.
+             Came in as the team's control engineer and ended up spending most of it on
+             flight dynamics: built the Python simulation of the spinning transfer phase,
+             and co-authored the final report and defence with a team of eleven.</p>
         </div>
       </li>
 
@@ -187,18 +187,29 @@
 
     <article class="feature">
       <div class="feature-body">
-        <p class="kicker">BSc Thesis · 10-person team · 2026</p>
+        <p class="kicker">BSc Thesis · AE3200 Design Synthesis · 2026</p>
         <h3>Dronado — “Spin It Up”</h3>
-        <p class="sub">Multi-drone cargo transport</p>
+        <p class="sub">Collaborative cable-suspended payload transport</p>
         <p>
-          Cooperative system where several drones combine to carry loads no single airframe
-          could, designed against a Hurricane Maria relief scenario. Covered system
-          architecture, avionics and comms, and a physics simulation of the spinning
-          transfer phase.
+          Three autonomous fixed-wing UAVs with rotatable propellers, flying in formation to
+          carry one 50 kg cable-suspended payload over 20 km. They take off vertically, then
+          transition to fixed-wing cruise — the efficiency of a wing without needing a runway.
+          The point is places conventional logistics can't reach: remote rural communities and
+          disaster-hit regions, which we designed against a Hurricane Maria relief scenario.
+        </p>
+        <p>
+          What makes it hard is that no airframe owns the load. Three aircraft share one
+          suspended mass through cables, so the formation has to hold under coordinated
+          trajectory optimisation, with redundant sensing and comms behind it.
         </p>
         <ul class="tags">
-          <li>Python</li><li>Simulink</li><li>Flight Dynamics</li><li>Systems Engineering</li>
+          <li>Python</li><li>Simulink</li><li>Trajectory Optimisation</li>
+          <li>Optimal Control</li><li>Flight Dynamics</li><li>Drone Swarm</li>
         </ul>
+        <p class="paper">
+          <a href="https://repository.tudelft.nl/record/uuid:f880d193-b643-47dd-b23a-5ad3ee7a9749">
+            Full report in the TU Delft repository ↗</a>
+        </p>
       </div>
       <div class="feature-art" aria-hidden="true">
         <!-- Three drones orbiting a shared load -->
