@@ -42,7 +42,6 @@
     { "@type": "CollegeOrUniversity", "name": "Universidad Carlos III de Madrid" }
   ],
   "knowsAbout": ["Guidance Navigation and Control", "Flight Dynamics", "Control Theory", "Autonomous Systems", "Unmanned Aerial Vehicles", "Systems Engineering", "Trajectory Optimisation", "Optimal Control", "Computer Vision", "Machine Learning"],
-  "email": "mailto:pautarragona05@gmail.com",
   "sameAs": [
     "https://github.com/pautarragona",
     "https://www.linkedin.com/in/pautarragona/"
@@ -106,7 +105,7 @@
     </p>
 
     <p class="hero-links rise" style="--d:280ms">
-      <a href="mailto:pautarragona05@gmail.com">pautarragona05@gmail.com</a>
+      <a class="mailto" data-u="pautarragona05" data-d="gmail.com">Email</a>
       <a href="https://github.com/pautarragona" rel="me">GitHub</a>
       <a href="https://www.linkedin.com/in/pautarragona/" rel="me">LinkedIn</a>
     </p>
@@ -186,12 +185,12 @@
         <div class="what">
           <h3>MSc Control &amp; Simulation <span class="at">·</span> TU Delft</h3>
           <p class="org">Delft, Netherlands</p>
-          <p>The Control &amp; Simulation profile of the Control &amp; Operations track within
-             the MSc Aerospace Engineering — at TU Delft's Faculty of Aerospace Engineering,
-             not the Mechanical Engineering one. The section works on automatic flight
-             control, aerospace human–machine systems, and communication, navigation and
-             surveillance for air traffic management, with the MAV-lab for UAVs, the SIMONA
-             moving-base research simulator and the Cessna Citation laboratory aircraft.</p>
+          <p>The Control &amp; Simulation profile of the Control &amp; Operations track, within
+             the MSc Aerospace Engineering at TU Delft's Faculty of Aerospace Engineering.
+             Automatic flight control, aerospace human–machine systems, and communication,
+             navigation and surveillance for air traffic management — with the MAV-lab for
+             UAVs, the SIMONA moving-base research simulator and the Cessna Citation
+             laboratory aircraft.</p>
         </div>
       </li>
 
@@ -316,7 +315,7 @@
     <div class="prose">
       <p class="lede">The best way to reach me is email. I read everything.</p>
       <ul class="links">
-        <li><a href="mailto:pautarragona05@gmail.com">pautarragona05@gmail.com</a></li>
+        <li><a class="mailto" data-u="pautarragona05" data-d="gmail.com">Email</a></li>
         <li><a href="https://github.com/pautarragona" rel="me">GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/pautarragona/" rel="me">LinkedIn</a></li>
       </ul>
@@ -332,6 +331,14 @@
 
 <script>
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* The address is assembled at runtime and never appears in the HTML
+   source, so the crawlers that harvest mailto: links find nothing. */
+document.querySelectorAll('.mailto').forEach(el => {
+  const addr = el.dataset.u + '@' + el.dataset.d;
+  el.href = 'mailto:' + addr;
+  el.textContent = addr;
+});
 
 const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
