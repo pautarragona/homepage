@@ -370,6 +370,9 @@ mark {
 
 .what p:last-child { margin: 0; color: var(--muted); font-size: .9375rem; }
 
+/* entries with no .org line need the breathing room it would have given */
+.what h3 + p:not(.org) { margin-top: .45rem; }
+
 @media (max-width: 40rem) {
   .entry { grid-template-columns: 1fr; gap: .45rem; }
   .when { padding-top: 0; }
