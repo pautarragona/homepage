@@ -127,64 +127,63 @@ body {
 
 .hero-bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
 
-/* faint engineering grid, faded out at the edges */
-.grid {
-  position: absolute; inset: -2px;
-  background-image:
-    linear-gradient(to right,  var(--rule) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--rule) 1px, transparent 1px);
-  background-size: 68px 68px;
-  opacity: .55;
-  -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 42%, #000 20%, transparent 78%);
-          mask-image: radial-gradient(ellipse 75% 65% at 50% 42%, #000 20%, transparent 78%);
-}
+/* ── Step response plot ──
+   Underdamped second-order system settling to setpoint. The curve draws
+   itself once and the tracer rides the leading edge, so the easing here
+   must match the animateMotion keySplines in the markup. */
 
-.glow {
+.plot {
   position: absolute;
-  width: 46rem; height: 46rem;
-  border-radius: 50%;
-  filter: blur(90px);
-  opacity: .5;
-}
-.glow-a {
-  top: -22rem; left: -14rem;
-  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 46%, transparent), transparent 68%);
-  animation: drift-a 24s ease-in-out infinite alternate;
-}
-.glow-b {
-  bottom: -26rem; right: -16rem;
-  background: radial-gradient(circle, color-mix(in srgb, var(--ice) 26%, transparent), transparent 68%);
-  animation: drift-b 30s ease-in-out infinite alternate;
-}
-@media (prefers-color-scheme: light) { .glow { opacity: .32; } }
-
-@keyframes drift-a { to { transform: translate3d(7rem, 4rem, 0) scale(1.12); } }
-@keyframes drift-b { to { transform: translate3d(-6rem, -3rem, 0) scale(1.08); } }
-
-/* pointer-following light */
-.spot {
-  position: absolute; inset: 0;
-  opacity: 0;
-  transition: opacity .5s linear;
-  background: radial-gradient(
-    22rem 22rem at var(--mx, 50%) var(--my, 50%),
-    color-mix(in srgb, var(--accent) 15%, transparent), transparent 62%);
+  top: 50%; right: -3%;
+  transform: translateY(-48%);
+  width: min(60%, 41rem);
+  height: auto;
+  overflow: visible;
 }
 
-/* trajectory */
-.traj {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  color: color-mix(in srgb, var(--accent) 55%, transparent);
+.plot-grid path { fill: none; stroke: var(--rule); stroke-width: 1; }
+
+.axis {
+  fill: none;
+  stroke: color-mix(in srgb, var(--muted) 42%, transparent);
+  stroke-width: 1.25;
 }
-.traj path {
-  animation: flow 3.2s linear infinite, fade-in 2.4s var(--ease) both;
+
+.setpoint {
+  fill: none;
+  stroke: color-mix(in srgb, var(--ice) 65%, transparent);
+  stroke-width: 1.25;
+  stroke-dasharray: 4 7;
 }
-@keyframes flow { to { stroke-dashoffset: -28; } }
-@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-.marker {
+
+.response {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  /* pathLength="1000" in the markup makes this exact, whatever the geometry */
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 2.6s .4s cubic-bezier(.3, 0, .2, 1) forwards;
+  filter: drop-shadow(0 2px 10px color-mix(in srgb, var(--accent) 35%, transparent));
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+.tracer {
   fill: var(--ice);
   filter: drop-shadow(0 0 6px var(--ice));
+  animation: fade-in .5s .4s both;
+}
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 52rem) {
+  .plot {
+    top: auto; bottom: 5%; right: -18%;
+    transform: none;
+    width: 118%;
+    opacity: .4;
+  }
 }
 
 /* ── hero content ── */
@@ -192,21 +191,10 @@ body {
 .hero-in { position: relative; }
 
 .eyebrow {
-  display: inline-flex; align-items: center; gap: .6rem;
   font-family: var(--mono);
   font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
   color: var(--muted);
   margin: 0 0 1.75rem;
-}
-.eyebrow .dot {
-  width: 7px; height: 7px; border-radius: 50%;
-  background: var(--ice);
-  box-shadow: 0 0 0 0 color-mix(in srgb, var(--ice) 60%, transparent);
-  animation: ping 2.4s ease-out infinite;
-}
-@keyframes ping {
-  70%  { box-shadow: 0 0 0 9px transparent; }
-  100% { box-shadow: 0 0 0 0 transparent; }
 }
 
 .name {
@@ -228,23 +216,15 @@ body {
 }
 .tagline em { color: var(--ink); font-style: normal; }
 
-.scroll-cue {
-  position: absolute; bottom: 2rem; left: 50%;
-  width: 1px; height: 3rem;
-  background: linear-gradient(var(--rule), transparent);
-  overflow: hidden;
+.hero-links {
+  display: flex; flex-wrap: wrap;
+  gap: .4rem 1.5rem;
+  font-family: var(--mono);
+  font-size: .8125rem;
+  margin: 0;
 }
-.scroll-cue span {
-  position: absolute; inset-inline: 0; height: 40%;
-  background: var(--accent);
-  animation: cue 2.2s var(--ease) infinite;
-}
-@keyframes cue {
-  0%   { transform: translateY(-100%); opacity: 0; }
-  40%  { opacity: 1; }
-  100% { transform: translateY(300%); opacity: 0; }
-}
-@media (max-width: 40rem) { .scroll-cue { display: none; } }
+.hero-links a { color: var(--muted); text-decoration: none; }
+.hero-links a:hover { color: var(--accent); text-decoration: underline; }
 
 /* entrance */
 .rise { animation: rise .85s var(--ease) both; animation-delay: var(--d, 0ms); }
@@ -297,7 +277,6 @@ h2 {
   color: var(--muted);
   margin: 0 0 2.5rem;
 }
-h2 i { font-style: normal; color: var(--accent); }
 h2::after {
   content: ""; flex: 1; height: 1px;
   background: linear-gradient(to right, var(--rule), transparent);
@@ -519,5 +498,7 @@ footer p { margin: 0; }
     transition-duration: .001ms !important;
   }
   .reveal { opacity: 1; transform: none; }
-  .marker, .scroll-cue { display: none; }
+  /* SMIL ignores this media query, so hide the tracer outright */
+  .tracer { display: none; }
+  .response { stroke-dashoffset: 0; }
 }

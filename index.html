@@ -66,21 +66,23 @@
 </div>
 
 <header class="hero" id="top">
+  <!-- Step response of an underdamped second-order system: the plot every
+       control course opens with. Draws itself once, then rests at setpoint. -->
   <div class="hero-bg" aria-hidden="true">
-    <div class="grid"></div>
-    <div class="glow glow-a"></div>
-    <div class="glow glow-b"></div>
-    <div class="spot" id="spot"></div>
-    <!-- Trajectory motif: dashed flight path with a marker flying it -->
-    <svg class="traj" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid slice">
-      <path id="arc" d="M -40 330 C 180 330, 250 90, 420 90 S 660 250, 860 60"
-            fill="none" stroke="currentColor" stroke-width="1.25"
-            stroke-dasharray="5 9" vector-effect="non-scaling-stroke"/>
-      <circle class="marker" cx="-40" cy="330" r="4">
-        <animateMotion dur="14s" repeatCount="indefinite" rotate="auto"
-                       keyPoints="0;1" keyTimes="0;1" calcMode="spline"
-                       keySplines="0.45 0 0.55 1">
-          <mpath href="#arc" xlink:href="#arc"/>
+    <svg class="plot" viewBox="0 0 620 300" preserveAspectRatio="xMidYMid meet">
+      <g class="plot-grid">
+        <path d="M40 40 H600 M40 90 H600 M40 140 H600 M40 190 H600 M40 240 H600"/>
+        <path d="M120 20 V270 M240 20 V270 M360 20 V270 M480 20 V270"/>
+      </g>
+      <path class="axis" d="M40 20 V265 H600"/>
+      <path class="setpoint" d="M40 90 H600"/>
+      <path class="response" id="resp" pathLength="1000"
+            d="M40 240 L120 240 C150 240 165 55 195 52 C225 49 235 115 265 114
+               C292 113 300 78 330 79 C358 80 365 97 395 96 C425 95 440 90 600 90"/>
+      <circle class="tracer" r="3.5" cx="0" cy="0">
+        <animateMotion dur="2.6s" begin="0.4s" fill="freeze" calcMode="spline"
+                       keyPoints="0;1" keyTimes="0;1" keySplines="0.3 0 0.2 1">
+          <mpath href="#resp" xlink:href="#resp"/>
         </animateMotion>
       </circle>
     </svg>
@@ -88,7 +90,7 @@
 
   <div class="wrap hero-in">
     <p class="eyebrow rise" style="--d:0ms">
-      <span class="dot"></span> Barcelona → Delft · MSc Control &amp; Simulation
+      Barcelona → Delft · MSc Control &amp; Simulation
     </p>
 
     <h1 class="name rise" style="--d:80ms">
@@ -100,19 +102,18 @@
       <em>drones, control, and race cars.</em>
     </p>
 
-    <div class="actions rise" style="--d:280ms">
-      <a class="btn" href="#projects">See the work</a>
-      <a class="btn btn-quiet" href="mailto:pautarragona05@gmail.com">Get in touch</a>
-    </div>
+    <p class="hero-links rise" style="--d:280ms">
+      <a href="mailto:pautarragona05@gmail.com">pautarragona05@gmail.com</a>
+      <a href="https://github.com/pautarragona" rel="me">GitHub</a>
+      <a href="https://www.linkedin.com/in/TODO-your-handle" rel="me">LinkedIn</a>
+    </p>
   </div>
-
-  <div class="scroll-cue rise" style="--d:520ms" aria-hidden="true"><span></span></div>
 </header>
 
 <main id="main">
 
   <section id="about" class="wrap reveal">
-    <h2><i>01</i> About</h2>
+    <h2>About</h2>
     <div class="prose">
       <p class="lede">
         I'm an aerospace engineer from Barcelona, based in Delft. I just finished my BSc
@@ -133,7 +134,7 @@
   </section>
 
   <section id="experience" class="wrap reveal">
-    <h2><i>02</i> Experience</h2>
+    <h2>Experience</h2>
     <ol class="timeline">
 
       <li class="entry">
@@ -180,7 +181,7 @@
   </section>
 
   <section id="projects" class="wrap reveal">
-    <h2><i>03</i> Projects</h2>
+    <h2>Projects</h2>
 
     <article class="feature">
       <div class="feature-body">
@@ -220,7 +221,7 @@
   </section>
 
   <section id="contact" class="wrap reveal">
-    <h2><i>04</i> Contact</h2>
+    <h2>Contact</h2>
     <div class="prose">
       <p class="lede">The best way to reach me is email. I read everything.</p>
       <ul class="links">
@@ -235,7 +236,7 @@
 
 <footer class="wrap">
   <p>© <span id="year">2026</span> Pau Tarragona</p>
-  <p>Delft, NL · Plain HTML, no trackers</p>
+  <p>Delft, NL</p>
 </footer>
 
 <script>
@@ -261,18 +262,6 @@ const onScroll = () => topbar.classList.toggle('show', window.scrollY > 260);
 addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
-/* Soft light that follows the pointer across the hero */
-const spot = document.getElementById('spot');
-if (spot && !still && matchMedia('(hover: hover)').matches) {
-  const hero = document.querySelector('.hero');
-  hero.addEventListener('pointermove', (e) => {
-    const r = hero.getBoundingClientRect();
-    spot.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-    spot.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    spot.style.opacity = '1';
-  });
-  hero.addEventListener('pointerleave', () => { spot.style.opacity = '0'; });
-}
 </script>
 </body>
 </html>
