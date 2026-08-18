@@ -382,8 +382,10 @@ mark {
 .feature {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 15rem;
-  gap: 2rem;
+  /* minmax(0,…) so the text column can actually shrink; a bare 1fr
+     refuses to go below its content and reopens the dead gap */
+  grid-template-columns: minmax(0, 1fr) 14rem;
+  gap: 2.5rem;
   align-items: center;
   text-decoration: none;
   color: inherit;
@@ -412,11 +414,11 @@ mark {
 /* the only hint that the card is clickable */
 .go {
   position: absolute;
-  top: 1.3rem; right: 1.45rem;
-  font-size: 1rem;
+  top: 1.15rem; right: 1.35rem;
+  font-size: 1.35rem;
   line-height: 1;
   color: var(--muted);
-  opacity: .45;
+  opacity: .7;
   transition: opacity .3s var(--ease), transform .3s var(--ease), color .3s var(--ease);
 }
 .feature:hover .go {
@@ -429,10 +431,11 @@ mark {
   font-size: .9375rem;
   margin: 0 0 1rem;
 }
+/* no max-width here: the grid column sets the measure, and capping it
+   again just leaves a gap between the text and the diagram */
 .feature-body > p:not(.kicker):not(.sub) {
   color: var(--muted);
   font-size: .9375rem;
-  max-width: 46ch;
 }
 
 .tags {
@@ -454,7 +457,7 @@ mark {
 
 .orbit {
   fill: none;
-  stroke: var(--rule);
+  stroke: color-mix(in srgb, var(--muted) 40%, transparent);
   stroke-width: 1;
   stroke-dasharray: 3 6;
   animation: spin 40s linear infinite;
@@ -471,7 +474,7 @@ mark {
 .node:nth-of-type(3) { animation-delay: -2.2s; }
 @keyframes bob { 50% { opacity: .45; } }
 
-.tether { stroke: var(--rule); stroke-width: 1; fill: none; }
+.tether { stroke: color-mix(in srgb, var(--muted) 50%, transparent); stroke-width: 1; fill: none; }
 .load {
   fill: none;
   stroke: var(--ice);
@@ -507,7 +510,9 @@ mark {
 .sm-bar.win {
   opacity: 1;
   fill: var(--ice);
-  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--ice) 55%, transparent));
+  /* keep this restrained - a strong glow on a thin tall bar reads as a
+     rendering artefact rather than a highlight */
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--ice) 30%, transparent));
 }
 
 .sm-unknown {

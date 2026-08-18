@@ -231,15 +231,15 @@
       <div class="feature-art" aria-hidden="true">
         <!-- Three drones orbiting a shared load -->
         <svg viewBox="0 0 200 200">
-          <circle class="orbit" cx="100" cy="100" r="62"/>
-          <circle class="orbit orbit-2" cx="100" cy="100" r="38"/>
+          <circle class="orbit" cx="100" cy="100" r="80"/>
+          <circle class="orbit orbit-2" cx="100" cy="100" r="50"/>
           <g class="rotor">
-            <circle class="node" cx="100" cy="38" r="5.5"/>
-            <circle class="node" cx="46"  cy="131" r="5.5"/>
-            <circle class="node" cx="154" cy="131" r="5.5"/>
-            <path class="tether" d="M100 38 L100 100 M46 131 L100 100 M154 131 L100 100"/>
+            <circle class="node" cx="100" cy="20"  r="7"/>
+            <circle class="node" cx="31"  cy="140" r="7"/>
+            <circle class="node" cx="169" cy="140" r="7"/>
+            <path class="tether" d="M100 20 L100 100 M31 140 L100 100 M169 140 L100 100"/>
           </g>
-          <rect class="load" x="90" y="90" width="20" height="20" rx="3"/>
+          <rect class="load" x="87" y="87" width="26" height="26" rx="4"/>
         </svg>
       </div>
     </a>
@@ -266,19 +266,19 @@
              One clears the confidence threshold; the dashed bar is the
              unknown bucket that catches everything that doesn't. -->
         <svg viewBox="0 0 200 200">
-          <path class="sm-axis"   d="M18 170 H186"/>
-          <path class="sm-thresh" d="M18 112 H186"/>
+          <path class="sm-axis"   d="M8 180 H192"/>
+          <path class="sm-thresh" d="M8 80 H192"/>
           <g class="softmax">
-            <rect class="sm-bar" style="--i:0" x="25"  y="152" width="11" height="18"/>
-            <rect class="sm-bar" style="--i:1" x="41"  y="136" width="11" height="34"/>
-            <rect class="sm-bar" style="--i:2" x="57"  y="158" width="11" height="12"/>
-            <rect class="sm-bar win" style="--i:3" x="73" y="74" width="11" height="96"/>
-            <rect class="sm-bar" style="--i:4" x="89"  y="148" width="11" height="22"/>
-            <rect class="sm-bar" style="--i:5" x="105" y="155" width="11" height="15"/>
-            <rect class="sm-bar" style="--i:6" x="121" y="130" width="11" height="40"/>
-            <rect class="sm-bar" style="--i:7" x="137" y="159" width="11" height="11"/>
-            <rect class="sm-bar" style="--i:8" x="153" y="144" width="11" height="26"/>
-            <rect class="sm-bar sm-unknown" style="--i:9" x="169" y="140" width="11" height="30"/>
+            <rect class="sm-bar" style="--i:0" x="11"  y="152" width="13" height="28"/>
+            <rect class="sm-bar" style="--i:1" x="29"  y="128" width="13" height="52"/>
+            <rect class="sm-bar" style="--i:2" x="48"  y="160" width="13" height="20"/>
+            <rect class="sm-bar win" style="--i:3" x="66" y="32" width="13" height="148"/>
+            <rect class="sm-bar" style="--i:4" x="85"  y="146" width="13" height="34"/>
+            <rect class="sm-bar" style="--i:5" x="103" y="156" width="13" height="24"/>
+            <rect class="sm-bar" style="--i:6" x="121" y="118" width="13" height="62"/>
+            <rect class="sm-bar" style="--i:7" x="140" y="162" width="13" height="18"/>
+            <rect class="sm-bar" style="--i:8" x="158" y="140" width="13" height="40"/>
+            <rect class="sm-bar sm-unknown" style="--i:9" x="177" y="134" width="13" height="46"/>
           </g>
         </svg>
       </div>
