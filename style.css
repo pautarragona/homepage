@@ -400,7 +400,11 @@ mark {
   color: var(--muted);
   margin: 0 0 .85rem;
 }
+.feature + .feature { margin-top: 1.25rem; }
+
 .feature h3 { font-size: clamp(1.35rem, 3vw, 1.75rem); letter-spacing: -0.025em; }
+.feature h3 a { text-decoration: none; color: inherit; }
+.feature h3 a:hover { color: var(--accent); }
 .feature .sub {
   color: var(--accent);
   font-size: .9375rem;
@@ -457,25 +461,46 @@ mark {
 }
 @keyframes pulse { 50% { transform: scale(1.14); } }
 
-/* Secondary project — deliberately lighter than .feature so the
-   hierarchy reads: Dronado first, everything else after. */
-.card {
-  margin-top: 1rem;
-  padding: clamp(1.25rem, 3vw, 1.75rem);
-  border: 1px solid var(--rule);
-  border-radius: 16px;
-  transition: border-color .4s var(--ease);
+/* ── FungEye: classifier viewfinder ── */
+
+.brackets path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-linecap: round;
 }
-.card:hover { border-color: color-mix(in srgb, var(--accent) 35%, transparent); }
-.card h3 { font-size: 1.25rem; letter-spacing: -0.02em; }
-.card h3 a { text-decoration: none; }
-.card h3 a:hover { text-decoration: underline; }
-.card .sub { color: var(--accent); font-size: .9375rem; margin: 0 0 1rem; }
-.card > p:not(.kicker):not(.sub) {
-  color: var(--muted);
-  font-size: .9375rem;
-  max-width: 58ch;
-  margin: 0;
+
+.cap {
+  fill: color-mix(in srgb, var(--ice) 20%, transparent);
+  stroke: var(--ice);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+.stem { fill: none; stroke: var(--ice); stroke-width: 1.5; }
+
+.scan {
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  opacity: .75;
+  transform-box: view-box;
+  animation: scan 4.6s ease-in-out infinite;
+}
+@keyframes scan {
+  0%, 100% { transform: translateY(-54px); }
+  50%      { transform: translateY(54px); }
+}
+
+.bars rect {
+  fill: var(--accent);
+  transform-box: view-box;
+  transform-origin: 70px 0;
+  animation: settle 4.6s ease-in-out infinite;
+}
+.bars rect:nth-child(2) { opacity: .55; animation-delay: -.6s; }
+.bars rect:nth-child(3) { opacity: .28; animation-delay: -1.2s; }
+@keyframes settle {
+  0%, 100% { transform: scaleX(.45); }
+  50%      { transform: scaleX(1); }
 }
 
 .more {
