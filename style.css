@@ -533,27 +533,40 @@ mark {
 }
 @keyframes rise-bar { to { transform: scaleY(1); } }
 
-/* ── Minidrone: line track with a drone flying it ── */
+/* ── Minidrone: line track with a quadrotor flying it ── */
 
-.md-track {
-  fill: none;
-  stroke: color-mix(in srgb, var(--muted) 55%, transparent);
-  stroke-width: 6;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+.md-track { stroke: color-mix(in srgb, var(--muted) 60%, transparent); }
+.md-flown {
+  stroke: var(--accent);
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  /* same 4 s run as the drone's motion, which starts after a 1 s hold */
+  animation: draw 4s 1s cubic-bezier(.4, 0, .2, 1) forwards;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 45%, transparent));
 }
-.md-land {
-  fill: none;
-  stroke: var(--ice);
-  stroke-width: 1.5;
-  stroke-dasharray: 3 4;
-}
-.md-drone {
-  fill: var(--accent);
-  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 55%, transparent));
-}
+.md-land, .md-pad { stroke: var(--ice); }
+.md-arm, .md-rotor { stroke: var(--accent); }
+.md-body { fill: var(--ice); }
+.md-drone { filter: drop-shadow(0 0 6px color-mix(in srgb, var(--accent) 50%, transparent)); }
 /* the static copy only shows when motion is reduced (see the end of the file) */
 .md-static { display: none; }
+
+/* small highlight pill, used next to a project title */
+.badge-row { margin: .5rem 0 .6rem; }
+.badge {
+  display: inline-block;
+  padding: .2rem .6rem;
+  border: 1px solid color-mix(in srgb, var(--ice) 60%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--ice) 12%, transparent);
+  color: var(--ice);
+  font-family: var(--mono);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
 
 .more {
   margin: 1.5rem 0 0;
@@ -600,5 +613,6 @@ footer p { margin: 0; }
   .tracer { display: none; }
   .md-moving { display: none; }
   .md-static { display: inline; }
+  .md-flown { stroke-dashoffset: 0; }
   .response { stroke-dashoffset: 0; }
 }

@@ -27,7 +27,7 @@
 -->
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23070b14'/><text x='50' y='72' font-size='62' font-weight='700' text-anchor='middle' fill='%233d7bff' font-family='system-ui,sans-serif'>P</text></svg>">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2026-11-06">
 <!-- Scroll reveals start hidden; without JS they would never appear -->
 <noscript><style>.reveal{opacity:1;transform:none}.sm-bar{transform:scaleY(1)}</style></noscript>
 
@@ -128,12 +128,13 @@
       </p>
       <p>
         My capstone was a cooperative multi-drone cargo transport system for disaster
-        relief, where I worked on the offline NMPC behind its trajectory planning. This
-        year I'm on DUT Racing's driverless team. I like problems where the control
+        relief, where I worked on the offline NMPC behind its trajectory planning. In the
+        MathWorks Minidrone Competition our team finished <strong>3rd in Europe</strong>,
+        and this year I'm on DUT Racing's driverless team. I like problems where the control
         theory has to survive contact with real hardware.
       </p>
       <p>
-        Open for internships in 2027.
+        <strong>Open for internships in 2027.</strong>
       </p>
       <!-- Drop cv.pdf in the repo root, then delete these two comment lines to switch the button on.
       <p class="actions">
@@ -284,13 +285,13 @@
 
     <div class="feature">
       <div class="feature-body">
-        <p class="kicker">Competition · MathWorks Minidrone · 2026 · 3rd in Europe</p>
-        <h3>Minidrone line follower</h3>
-        <p class="sub">Vision-based line following on a Parrot Mambo</p>
+        <p class="kicker">Competition · 2026</p>
+        <h3>MathWorks Minidrone Competition</h3>
+        <p class="badge-row"><span class="badge">Top 3 in Europe</span></p>
+        <p class="sub">Vision-based line following on a Parrot Mambo, built in Simulink</p>
         <p>
-          A team entry in the MathWorks Minidrone Competition: a Parrot Mambo has to follow
-          a line on the floor using its downward camera and land on the end marker, with
-          everything built in Simulink. We placed 3rd at European level.
+          The Mambo has to follow a line on the floor with its downward camera and land on
+          the marker at the end. Our team finished 3rd at European level.
         </p>
         <p>
           Simulation was the easy part. Getting it to fly on the real drone meant slimming
@@ -303,20 +304,42 @@
         </ul>
       </div>
       <div class="feature-art" aria-hidden="true">
-        <!-- Top-down view of a line track. The drone dot flies it once,
-             then rests on the landing marker. -->
+        <!-- Top-down view of the line track. The quadrotor flies it once,
+             tracing the line in accent colour, then sits on the landing marker.
+             Colours are also set as attributes so the drawing never falls back
+             to plain black if the stylesheet is stale. -->
         <svg viewBox="0 0 200 200">
-          <path class="md-track" id="md-path"
-                d="M30 170 V110 Q30 80 60 80 H120 Q150 80 150 50 V30"/>
-          <circle class="md-land" cx="150" cy="30" r="9"/>
-          <circle class="md-drone md-static" cx="150" cy="30" r="5"/>
-          <circle class="md-drone md-moving" r="5">
+          <rect class="md-pad" x="16" y="166" width="24" height="24" rx="4"
+                fill="none" stroke="#7fe4ff" stroke-width="1.5"/>
+          <path class="md-track" id="md-path" fill="none" stroke="#5b6a8a" stroke-width="7"
+                stroke-linecap="round" stroke-linejoin="round"
+                d="M28 178 V128 C28 100 44 92 70 92 H104 C128 92 136 80 136 62 C136 42 150 30 172 30"/>
+          <path class="md-flown" pathLength="1000" fill="none" stroke="#3d7bff" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round"
+                d="M28 178 V128 C28 100 44 92 70 92 H104 C128 92 136 80 136 62 C136 42 150 30 172 30"/>
+          <circle class="md-land" cx="172" cy="30" r="14" fill="none" stroke="#7fe4ff"
+                  stroke-width="1.5" stroke-dasharray="3 4"/>
+          <g class="md-drone md-static" transform="translate(172 30)">
+            <path class="md-arm" d="M-8 -8 L8 8 M-8 8 L8 -8" stroke="#3d7bff" stroke-width="2"/>
+            <circle class="md-rotor" cx="-8" cy="-8" r="5" fill="none" stroke="#3d7bff" stroke-width="1.5"/>
+            <circle class="md-rotor" cx="8"  cy="-8" r="5" fill="none" stroke="#3d7bff" stroke-width="1.5"/>
+            <circle class="md-rotor" cx="-8" cy="8"  r="5" fill="none" stroke="#3d7bff" stroke-width="1.5"/>
+            <circle class="md-rotor" cx="8"  cy="8"  r="5" fill="none" stroke="#3d7bff" stroke-width="1.5"/>
+            <circle class="md-body" r="3.5" fill="#7fe4ff"/>
+          </g>
+          <g class="md-drone md-moving">
+            <path class="md-arm" d="M-8 -8 L8 8 M-8 8 L8 -8" stroke="#3d7bff" stroke-width="2"/>
+            <circle class="md-rotor" cx="-8" cy="-8" r="5" fill="none" stroke="#3d7bff" stroke-width="1.5"/>
+            <circle class="md-rotor" cx="8"  cy="-8" r="5" fill="none" stroke="#3d7bff" stroke-width="1.5"/>
+            <circle class="md-rotor" cx="-8" cy="8"  r="5" fill="none" stroke="#3d7bff" stroke-width="1.5"/>
+            <circle class="md-rotor" cx="8"  cy="8"  r="5" fill="none" stroke="#3d7bff" stroke-width="1.5"/>
+            <circle class="md-body" r="3.5" fill="#7fe4ff"/>
             <animateMotion dur="5s" begin="0s" fill="freeze" calcMode="spline"
                            keyPoints="0;0;1" keyTimes="0;0.2;1"
                            keySplines="0 0 1 1;0.4 0 0.2 1">
               <mpath href="#md-path" xlink:href="#md-path"/>
             </animateMotion>
-          </circle>
+          </g>
         </svg>
       </div>
     </div>
