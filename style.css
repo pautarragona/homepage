@@ -533,6 +533,28 @@ mark {
 }
 @keyframes rise-bar { to { transform: scaleY(1); } }
 
+/* ── Minidrone: line track with a drone flying it ── */
+
+.md-track {
+  fill: none;
+  stroke: color-mix(in srgb, var(--muted) 55%, transparent);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.md-land {
+  fill: none;
+  stroke: var(--ice);
+  stroke-width: 1.5;
+  stroke-dasharray: 3 4;
+}
+.md-drone {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--accent) 55%, transparent));
+}
+/* the static copy only shows when motion is reduced (see the end of the file) */
+.md-static { display: none; }
+
 .more {
   margin: 1.5rem 0 0;
   font-size: .875rem;
@@ -576,5 +598,7 @@ footer p { margin: 0; }
   .reveal { opacity: 1; transform: none; }
   /* SMIL ignores this media query, so hide the tracer outright */
   .tracer { display: none; }
+  .md-moving { display: none; }
+  .md-static { display: inline; }
   .response { stroke-dashoffset: 0; }
 }

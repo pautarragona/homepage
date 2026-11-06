@@ -122,14 +122,18 @@
     <h2>About</h2>
     <div class="prose">
       <p class="lede">
-        I'm an aerospace engineer from Barcelona, based in Delft. I just finished my BSc
-        at TU Delft and I'm starting an MSc in Control &amp; Simulation there, working on
-        guidance, navigation and control for autonomous vehicles.
+        I'm an aerospace engineer from Barcelona, based in Delft. After my BSc at TU Delft
+        I'm now doing the MSc in Control &amp; Simulation there, focused on guidance,
+        navigation and control for autonomous vehicles.
       </p>
       <p>
         My capstone was a cooperative multi-drone cargo transport system for disaster
-        relief, and this year I'm joining DUT Racing's driverless team. I like problems
-        where the control theory has to survive contact with real hardware.
+        relief, where I worked on the offline NMPC behind its trajectory planning. This
+        year I'm on DUT Racing's driverless team. I like problems where the control
+        theory has to survive contact with real hardware.
+      </p>
+      <p>
+        I'm looking for an internship in GNC or autonomy from summer 2027.
       </p>
       <!-- Drop cv.pdf in the repo root, then delete these two comment lines to switch the button on.
       <p class="actions">
@@ -148,7 +152,9 @@
         <div class="what">
           <h3>Autonomous Systems <span class="at">·</span> DUT Racing</h3>
           <p class="org">Delft, Netherlands</p>
-          <p>Joining DUT27, the driverless Formula Student team, for the 2027 season.</p>
+          <p>Part of the autonomous systems team of DUT27, the driverless Formula Student
+             car for the 2027 season. Learning model predictive control, C++ and Git in a
+             large shared codebase, working in ROS2.</p>
         </div>
       </li>
 
@@ -208,7 +214,8 @@
              <a href="#projects">“Spin It Up” / Dronado</a>, three fixed-wing eVTOL UAVs
              sharing one 50 kg cable-suspended payload. I started as the team's control
              engineer, moved across to electronics, and stayed on the software side
-             helping with trajectory planning.</p>
+             building the offline NMPC solver used for the formation's trajectory
+             planning.</p>
         </div>
       </li>
 
@@ -251,10 +258,11 @@
           Then comes the hard part: a transition manoeuvre out of that spinning climb into
           level forward flight, three airframes at once, with a slung load none of them
           individually owns. That's what the coordinated trajectory optimisation is for,
-          backed by redundant sensing and comms.
+          backed by redundant sensing and comms. My part was the offline NMPC solver for
+          the coupled system of three aircraft and the slung payload.
         </p>
         <ul class="tags">
-          <li>Python</li><li>Trajectory Optimisation</li>
+          <li>Python</li><li>NMPC</li><li>Trajectory Optimisation</li>
           <li>Optimal Control</li><li>Flight Dynamics</li><li>Drone Swarm</li>
         </ul>
       </div>
@@ -273,6 +281,45 @@
         </svg>
       </div>
     </a>
+
+    <div class="feature">
+      <div class="feature-body">
+        <p class="kicker">Competition · MathWorks Minidrone · 2026 · 3rd in Europe</p>
+        <h3>Minidrone line follower</h3>
+        <p class="sub">Vision-based line following on a Parrot Mambo</p>
+        <p>
+          A team entry in the MathWorks Minidrone Competition: a Parrot Mambo has to follow
+          a line on the floor using its downward camera and land on the end marker, with
+          everything built in Simulink. We placed 3rd at European level.
+        </p>
+        <p>
+          Simulation was the easy part. Getting it to fly on the real drone meant slimming
+          the software down until it ran on the Mambo's small onboard computer, and that
+          gap between the model and the hardware taught me more than the model did. I made
+          a point of understanding the whole controller, not only my piece of it.
+        </p>
+        <ul class="tags">
+          <li>MATLAB</li><li>Simulink</li><li>Control</li><li>Image Processing</li><li>Parrot Mambo</li>
+        </ul>
+      </div>
+      <div class="feature-art" aria-hidden="true">
+        <!-- Top-down view of a line track. The drone dot flies it once,
+             then rests on the landing marker. -->
+        <svg viewBox="0 0 200 200">
+          <path class="md-track" id="md-path"
+                d="M30 170 V110 Q30 80 60 80 H120 Q150 80 150 50 V30"/>
+          <circle class="md-land" cx="150" cy="30" r="9"/>
+          <circle class="md-drone md-static" cx="150" cy="30" r="5"/>
+          <circle class="md-drone md-moving" r="5">
+            <animateMotion dur="5s" begin="0s" fill="freeze" calcMode="spline"
+                           keyPoints="0;0;1" keyTimes="0;0.2;1"
+                           keySplines="0 0 1 1;0.4 0 0.2 1">
+              <mpath href="#md-path" xlink:href="#md-path"/>
+            </animateMotion>
+          </circle>
+        </svg>
+      </div>
+    </div>
 
     <a class="feature" href="https://github.com/pautarragona/FungEye">
       <span class="go" aria-hidden="true">↗</span>
